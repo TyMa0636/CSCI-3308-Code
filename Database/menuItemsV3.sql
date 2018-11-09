@@ -91,8 +91,3 @@ INSERT into inventory values
 	('Lettuce', 1), ('Tomato', 1), ('Spinach', 1), ('Onion',1),('Mushrooms',1),('Bell Peppers',1), ('Banana Peppers',1), ('Cucumbers',1), 
 	('Balsamic Onions', 1),('Black Olives',1),('Jalapenos',1),('Pineapple', 1), ('BBQ Sauce', 1), ('Red Sauce', 1), ('Hummus', 1), ('Garlic', 1), ('Basil', 1)
 ;
-
-
-
-
-
