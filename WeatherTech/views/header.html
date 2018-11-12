@@ -1,24 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name=viewport content="width=device-width, initial-scale=1">
-	<title>WeatherTech Cafe</title>
+  <meta charset="utf-8">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <title>WeatherTech Cafe!</title>
 
-	 <link rel="stylesheet" href="style.css" type="text/css"/> 
+
+   <link rel="stylesheet" href="style.css" type="text/css"/> 
+   <link rel="stylesheet" href="SignUp.css" type="text/css"/> 
 </head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
 
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus, input[type=phone]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+button:hover {
+    opacity:1;
+}
+
+
+/* Change styles for signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .signupbtn {
+       width: 100%;
+    }
+}
+</style>
 <body>
-	<header>
-		<div class="header-logo">
-			<a href="index.html">
-				<img id="logo" src="weathertech-1.gif" alt="WeatherTech cafe">
-			</a>
-		</div>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a></a>Menu</li>
-			</ul>
-		</nav>
-	</header>
+
+<header>
+    <h1>Welcme to Weathertech</h1>
+    <div class="header-logo">
+      <a href="index.html">
+        <img id="logo" src="weathertech-1.gif" alt="WeatherTech cafe">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a></a>Menu</li>
+      </ul>
+    </nav>
+  </header>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+   <div class="image"></div>
+
+  <form class="modal-content">
+    <div class="container">
+    	<img id="weathertechimage" src="weathertech_logo.JPG" alt="WeatherTech Cafe">
+      <h2>CREATE ACCOUNT</h2>
+
+      <h4>Acount Information</h4>
+
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw-repeat"><b>Confirm Password</b></label>
+      <input type="password" placeholder="Confirm Password" name="psw-repeat" required>
+
+
+      <h4>Your Information</h4>
+      <label for="name"><b>First Name</b></label>
+      <input type="text" placeholder="Kaylee" name="name" required>
+
+      <label for="last_name"><b>Last Name</b></label>
+      <input type="text" placeholder="Ros" name="last_name" required>
+
+      <label for="phone_num"><b>Phone</b></label>
+      <input type="Phone" placeholder="(xxx)-xxx-xxx" name="phone_num" required>
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
