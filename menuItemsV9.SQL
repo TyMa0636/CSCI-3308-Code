@@ -3,7 +3,7 @@
 #DROP TABLE active_orders;
 #DROP TABLE inventory;
 #DROP TABLE ingredients;
-
+--probably not including inventory or ingredients
 CREATE TABLE if not exists users
 (
 	Name varchar(32) not null, 
@@ -13,9 +13,12 @@ CREATE TABLE if not exists users
 	Primary Key(UserID)
 ); 
 
+--changed to food from sandwich and pizza_calzone
+--this will allow us to do a join
+--added foodType and changed sandwich/pizza_calzone ids' to foodId
 CREATE TABLE if not exists food
 (
-	foodID integer not null, 
+	foodId integer not null,
 	Name varchar(25) not null,
 	foodType varchar(10) not null, 
 	WaitTime integer not null, 
@@ -24,23 +27,27 @@ CREATE TABLE if not exists food
 	Primary Key (foodID)
 );
 
-
+--added completed, this will be used to determine if an order was made
+--we will not be moving orders or deleting them. we would want to keep a record of orders.
+--this means we will have to change our formula for pickup time to only include not completed orders.
+--we could make a new table that holds completed orders instead of the bool. This is something we can discuss
 CREATE TABLE if not exists active_orders
 (
-	UserName varchar(32) not null, 
-	Item varchar(25) not null, 
+	UserId varchar(32) not null, 
+	FoodId integer not null, 
 	PickupTime integer not null,
 	completed boolean, 
 
 	Primary Key(UserName)
 );
 
+--not going to use
 CREATE TABLE if not exists inventory
 (
 	ingredientId varchar(25) not null, 
 	stockId integer not null
 );
-
+--probably will not use
 CREATE TABLE if not exists ingredients
 (
 	foodID integer not null, 
@@ -52,21 +59,23 @@ INSERT INTO users (Name, UserId, Password) values
 	('Tyler Mauer', 'tyma0636', 'lozer')
 ;
 
-INSERT into food (foodID, Name, foodType, WaitTime, Price) values 
-	(1, 'Baker Bacon', 'sandwhich', 7, 6.89), 
-	(2, 'BBQ Chicken', 'sandwhich', 7, 6.89), 
-	(3, 'BLT', 'sandwhich', 7, 4.89), 
-	(4, 'Italian', 'sandwhich', 7, 6.89), 
-	(5, 'Darley Divine', 'sandwhich', 7, 6.89), 
-	(6, 'Farrand Fodder', 'sandwhich', 7, 6.89), 
-	(7, 'Hallet Ham', 'sandwhich', 7, 6.89), 
-	(8, 'Libby Licous', 'sandwhich', 7, 6.89), 
-	(9, 'Parmesan Grilled Cheese', 'sandwhich', 7, 5.89), 
-	(10, 'Tofu Mozzarella', 'sandwhich', 7, 5.89), 
-	(11, 'Tuna Melt', 'sandwhich', 7, 5.89), 
-	(12, 'Turkey Bacon Club', 'sandwhich', 7, 6.89), 
-	(13, 'Turkey Jalapeno Melt', 'sandwhich', 7, 6.89), 
-	(14, 'Veggie Club', 'sandwhich', 7, 6.89),
+--changed to 'food' to allow the use of join. It common practice in industry
+--added a foodType variable
+INSERT into food (FoodId, Name, foodType, WaitTime, Price) values 
+	(1, 'Baker Bacon', 'sandwich', 7, 6.89),
+	(2, 'BBQ Chicken', 'sandwich', 7, 6.89),
+	(3, 'BLT', 'sandwich', 7, 4.89),
+	(4, 'Italian', 'sandwich', 7, 6.89),
+	(5, 'Darley Divine', 'sandwich', 7, 6.89),
+	(6, 'Farrand Fodder', 'sandwich', 7, 6.89),
+	(7, 'Hallet Ham', 'sandwich', 7, 6.89),
+	(8, 'Libby Licous', 'sandwich', 7, 6.89),
+	(9, 'Parmesan Grilled Cheese', 'sandwich', 7, 5.89),
+	(10, 'Tofu Mozzarella', 'sandwich', 7, 5.89),
+	(11, 'Tuna Melt', 'sandwich', 7, 5.89),
+	(12, 'Turkey Bacon Club', 'sandwich', 7, 6.89),
+	(13, 'Turkey Jalapeno Melt', 'sandwich', 7, 6.89),
+	(14, 'Veggie Club', 'sandwich', 7, 6.89),
 	(15, 'Cheese Pizza', 'pizza', 20, 4.89),
 	(16, 'Pepperoni Pizza', 'pizza', 20,5.49),
 	(17, 'BBQ Chicken Pizza', 'pizza', 20,6.89),
@@ -85,7 +94,7 @@ INSERT into food (foodID, Name, foodType, WaitTime, Price) values
 	(30, 'Vegan Calzone', 'calzone', 20,6.39)
 ;
 
-INSERT INTO ingredients (foodID, ingredient) values 
+INSERT INTO ingredients (foodId, ingredient) values 
 	(1, 'Bacon'), (1, 'Pepper Jack'), (1, 'Lettuce'), (1, 'Tomato'), (1, 'Balsamic Vinaigrette'), (1, 'Bread'),
 	(2, 'Chicken'), (2, 'Bacon'), (2, 'Mozzarella'), (2, 'BBQ Sauce'), (2, 'Lettuce'), (2, 'Tomato'), (2, 'Onion'), (2, 'Bread'),
 	(3, 'Bacon'), (3, 'Lettuce'), (3, 'Tomato'), (3, 'Bread'),
@@ -118,9 +127,17 @@ INSERT INTO ingredients (foodID, ingredient) values
 	(30, 'Tomato'), (30, 'Garlic'), (30, 'Black Olives'), (30, 'Basil')
 ;
 
-INSERT INTO active_orders (UserId, foodType, PickupTime, completed) values 
-	('tyma0636', 'calzone', 20, False)
+--added the foodId instead of the foodName
+INSERT INTO active_orders (UserId, foodId, PickupTime, completed) values 
+	('tyma0636', 29, 20, False)
 ;
+
+--TODO add this code to loginBackend.js
+--this is the join code that we need to use. This code will display all the information needed.
+--SELECT users.name, users.UserId, food.name as food_name, food.price, active_orders.PickupTime from users
+--inner join active_orders on active_orders.UserId = users.UserId
+--inner join food on food.foodId = active_orders.foodId;
+
 
 INSERT into inventory (ingredientId, stockId) values 
 	('Ciabatta', 1), ('Bacon', 1), ('Chicken', 1), ('Ham', 1), ('Salami', 1), ('Pepperoni', 1),
