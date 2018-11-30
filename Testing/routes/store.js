@@ -51,7 +51,28 @@ inner join food on food.foodId = active_orders.foodId;
 
 
 //stateless no knowledge of prior requests
-app.get('/', function (request, response) {
+app.get('/', function (request, response){
+    var query = 'SELECT * FROM active_orders;';
+
+    db.any(query)
+        .then(function(rows){
+            response.render('store/list', {
+                title: 'Active Orders',
+                data: rows
+        })
+    })
+    .catch(function (err){
+        request.flash('error', err);
+        response.render('store/list', {
+            title: 'Active Orders',
+            data: ''
+        })
+    })
+
+
+});
+
+/*app.get('/', function (request, response) {
     response.render('store/list', {
         UserId: '',
         Password: ''
@@ -79,7 +100,7 @@ app.get('/', function (request, response) {
     //I don't think we need this code because we don't need to display anything (like we don't
     //have anything we want to display right away) from our tables
 
-    /*db.any(query)
+    db.any(query)
         .then(function (rows) {
             // render views/store/list.ejs template file
             response.render('store/list', {
@@ -94,16 +115,16 @@ app.get('/', function (request, response) {
                 title: 'Store listing',
                 data: ''
             })
-        })*/
-});
+        })
+});*/
 
-app.get('/add', function (request, response)
+/*app.get('/add', function (request, response)
 {
-    response.render('user/add', {
-    Name: '',
-    UserId: '',
-    Password: ''
-})
+    response.render('store/add', {
+        Name: '',
+        UserId: '',
+        Password: ''
+    })
 });
 
 app.post('/add', function (request, response){
@@ -135,9 +156,9 @@ app.post('/add', function (request, response){
         var error_msg = errors.reduce((accumulator, current_error) => accumulator + '<br />' + current_error.msg, '');
         request.flash('error', error_msg);
     }
-});
+});*/
 
-app.get('/add', function (request, response)
+/*app.get('/add', function (request, response)
 {
     Response.render('store/add',
     {
@@ -178,7 +199,7 @@ app.post('/add', function (request, response)
             UserName: request.body.current_userId,
             user: request.body.query,
             PickupTime: request.body.pickUpTime
-    }*/
-});
+    }
+});*/
 
 

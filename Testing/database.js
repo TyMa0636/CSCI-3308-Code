@@ -4,8 +4,9 @@ const dbConfig = {
    host: 'localhost',
    port: 5432,
    database: 'weathertech',
-   user: 'postgres',
-   password: '123' 
+   user: 'sasha',
+   password: '' // TODO: Fill in your PostgreSQL password here.
+                // Use empty string if you did not set a password
 };
 
 var db = pgp(dbConfig);
