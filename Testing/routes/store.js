@@ -70,28 +70,40 @@ app.get('/', function (request, response){
     })
 });
 
-app.get('/', function (request, response) {
-    response.render('store/list', {
+app.get('/add', function (request, response) {
+    response.render('store/login', {
         UserId: '',
         Password: ''
     });
+});
 
-    var input = {
+app.post('/login', function(request, response){
+
+     var input = {
         userId: request.sanitize('userId').escape().trim(),
         paswrd: request.sanitize('paswrd').escape().trim()
-};
+    };
 
+    var query = 'SELECT * FROM users WHERE userid = ' + input.userId;
 
-    var current_userid = input.userId;
-    var current_paswrd = input.paswrd;
-
-    var query = 'SELECT UserId FROM User WHERE current_userId = userId;';
-
-    if(query == '')
-    {
-        //note: connect console.log to a display
-        console.log("User not found. Try creating an account!")
-    }
+    db.any(query)
+        .then(function(rows){
+            if(rows.length > 0) {
+                request.flash('success', 'Data added successfully!');
+                response.render('store/header', {});
+            } else {
+                //request.flash('error', error_message);
+                //response.render('store/header', {});
+            }
+    })
+    .catch(function (err){
+        var error_msg = errors.reduce((accumulator, current_error) => accumulator + '<br />' + current_error.msg, '');
+        request.flash('error', error_msg);
+        response.render('store/list', {
+            title: 'Active Orders',
+            data: ''
+        })
+    })
     
     
 

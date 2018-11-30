@@ -4,7 +4,14 @@ var app = express();
 
 app.get('/', function (request, response) {
    // render the views/index.ejs template file
-   response.render('index', {title: 'WeatherTech'})
+   /*if(loggedin)
+   {
+   	http session 
+   	//render index page
+   }else{
+   	//render home page 
+   }*/
+   response.render('index')
 });
 
 module.exports = app;
