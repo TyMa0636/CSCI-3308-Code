@@ -68,11 +68,9 @@ app.get('/', function (request, response){
             data: ''
         })
     })
-
-
 });
 
-/*app.get('/', function (request, response) {
+app.get('/', function (request, response) {
     response.render('store/list', {
         UserId: '',
         Password: ''
@@ -100,7 +98,7 @@ app.get('/', function (request, response){
     //I don't think we need this code because we don't need to display anything (like we don't
     //have anything we want to display right away) from our tables
 
-    db.any(query)
+    /*db.any(query)
         .then(function (rows) {
             // render views/store/list.ejs template file
             response.render('store/list', {
@@ -115,8 +113,8 @@ app.get('/', function (request, response){
                 title: 'Store listing',
                 data: ''
             })
-        })
-});*/
+        })*/
+});
 
 /*app.get('/add', function (request, response)
 {
