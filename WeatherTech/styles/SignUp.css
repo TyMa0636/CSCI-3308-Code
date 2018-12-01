@@ -107,7 +107,7 @@ hr {
 }
 
 .image {
-	background: url(weathertechinterior.JPG);
+	background: url(../images/weathertechinterior.JPG);
 	background-size: 100%;
 	height: 800px;
 	position: fixed;
