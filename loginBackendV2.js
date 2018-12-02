@@ -62,7 +62,6 @@ app.get('/', function (request, response) {
         paswrd: request.sanitize('paswrd').escape().trim()
 };
 
-
     var current_userid = input.userId;
     var current_paswrd = input.paswrd;
 
