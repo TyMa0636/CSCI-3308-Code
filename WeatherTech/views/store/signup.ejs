@@ -1,5 +1,7 @@
 <%- include ../header.ejs %>
 
+
+
 <div id="signup-modal">
 
    <div id="image"></div>
@@ -11,13 +13,21 @@
 
       <h4>Acount Information</h4>
 
+      <% if (messages.error) { %>
+          <p style="color:red"><%- messages.error %></p>
+      <% } %>
+
+      <% if (messages.success) { %>
+          <p style="color:green"><%- messages.success %></p>
+      <% } %>
+
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="UserId" value="<%= UserId %>" required>
+      <input type="text" placeholder="Enter Identikey" name="UserId" value="<UserID>" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="Password" value="<%= Password %>" required>
+      <input type="password" placeholder="Enter Password" name="Password" value="<Password>" required>
 
       <label for="psw-repeat"><b>Confirm Password</b></label>
       <input type="password" placeholder="Confirm Password" name="psw-repeat" required>
@@ -25,7 +35,7 @@
 
       <h4>Your Information</h4>
       <label for="name"><b>Full Name</b></label>
-      <input type="text" placeholder="Kaylee Smith" name="Name" value="<%= Name %>" required>
+      <input type="text" placeholder="Kaylee Smith" name="Name" value="<Name>" required>
 
      <!-- <label for="last_name"><b>Last Name</b></label>
       <input type="text" placeholder="Ros" name="Name" required> -->

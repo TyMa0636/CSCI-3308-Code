@@ -8,11 +8,12 @@ const dbConfig = {
    host: 'localhost',
    port: 5432,
    database: 'weathertech',
-   password: ''
+   user: 'postgres',
+   password: '123'
 };
 
 
 
 var db = pgp(dbConfig);
 
-module.exports = dbConfig;
+module.exports = db;
