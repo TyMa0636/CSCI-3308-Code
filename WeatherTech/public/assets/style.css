@@ -34,11 +34,16 @@ body {
 /*navigation  and header styles*/
 header {
 	background: var(--background);
-	text-align: center;
+	text-align: right;
 	position: relative;
 	z-index: 999;
 	width: 100%;
 	top: 0;
+}
+
+header img {
+	width: 200px;
+	margin-right: 2em;
 }
 
 .nav-toggle {
@@ -49,7 +54,7 @@ header {
 	position: absolute;
 	top: 0;
 	left: 0;
-	margin-left: 5em;
+	margin-left: 1em;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -201,18 +206,17 @@ nav a:hover {
   }
 
 .li-su-btn-container {
-	    grid-column: 4;
-    display: grid;
-    grid-template-columns: 100px 160px;
+	grid-column: 4;
+    display: block;
     height: 40px;
-    align-items: center;
+    width: fit-content;
+    padding-top: 10px;
 }
 
 .li-su-btn-container .login {
-	display: flex;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
+	height: 40px;
+    width: 120px;
+    float: left;
 }
 
 .li-su-btn-container .signup {
@@ -221,23 +225,20 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     width: 210px;
-}
-
-.li-su-btn-container .signup span {
-	margin-left: 2em;
+    float: right;
 }
 
 .li-su-btn-container .header-item {
 	display: flex;
-    width: 90px;
+    width: fit-content;
     background: none;
     border-style: none;
+    text-decoration: none;
     color: gold;
     height: 40px;
     justify-content: center;
     z-index: 1;
-    width: 160px;
-    margin-left: 3em;
+    margin: 0 auto;
 }
 
 .li-su-btn-container .header-item:hover {
@@ -334,84 +335,84 @@ nav a:hover {
 }
 
 .index-main .food-container #sandwich1 {
-	background: url(../images/sandwich1.jpg);
+	background: url(images/sandwich1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #sandwich2 {
-	background: url(../images/sandwich2.jpg);
+	background: url(images/sandwich2.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #sandwich3 {
-	background: url(../images/sandwich3.jpg);
+	background: url(images/sandwich3.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #sandwich4 {
-	background: url(../images/sandwich4.jpg);
+	background: url(images/sandwich4.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #sandwich5 {
-	background: url(../images/sandwich5.jpg);
+	background: url(images/sandwich5.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #sandwich6 {
-	background: url(../images/sandwich6.jpg);
+	background: url(images/sandwich6.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #pizza1 {
-	background: url(../images/pizza1.jpg);
+	background: url(images/pizza1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #pizza2 {
-	background: url(../images/pizza2.jpg);
+	background: url(images/pizza2.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #pizza3 {
-	background: url(../images/pizza3.jpeg);
+	background: url(images/pizza3.jpeg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #pizza4 {
-	background: url(../images/pizza4.jpg);
+	background: url(images/pizza4.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #pizza5 {
-	background: url(../images/pizza5.jpeg);
+	background: url(images/pizza5.jpeg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .index-main .food-container #pizza6 {
-	background: url(../images/pizza6.jpg);
+	background: url(images/pizza6.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;

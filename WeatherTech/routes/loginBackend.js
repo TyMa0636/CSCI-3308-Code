@@ -5,7 +5,7 @@ module.exports = app;
 
 //statelss no knowledge of prior requests
 app.get('/', function (request, response) {
-    response.render('store/list', {
+    response.render('index', {
         UserId: '',
         Password: ''
     })
@@ -13,7 +13,7 @@ app.get('/', function (request, response) {
     var input = {
         userId: request.sanitize('userId').escape().trim(),
         paswrd: request.sanitize('paswrd').escape().trim(),
-};
+    };
     //TODO
     //app.post to put information onto the server... Uses for login
     //app.put  update to the server... use for active orders i think
@@ -46,16 +46,9 @@ app.get('/', function (request, response) {
         })
 });
 
-app.get('/add', function (request, response)
-{
-    response.render('user/add', {
-    Name: '',
-    UserId: '',
-    Password: ''
-})
-})
+f
 
-app.post('/add', function (request, response))
+app.post('/add', function (request, response)
 {
 //create new user
     request.assert('Name', 'Name is required').notEmpty()
@@ -103,17 +96,17 @@ app.post('/add', function (request, response))
             price: request.body.price
         })
     }
-}
+})
 
 app.get('/add', function (request, response)
 {
-    Response.render('store/add'
+    response.render('store/add')
     {
         foodId: '';
     })
 }
 
-App.post('/add', function (request, response))
+app.post('/add', function (request, response))
 {
 //add order to active orders
     request.assert('foodID', 'foodId is required').notEmpty()
