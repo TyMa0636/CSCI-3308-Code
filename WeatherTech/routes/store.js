@@ -49,12 +49,18 @@ app.post('/signup', function (request,response) {
             Password: request.sanitize('Password').escape().trim()
         };
 
+
         //var conString = "postgres://warrenfulton:@localhost:5432/weathertech";
         //var client = new pg.Client(conString);
         //client.connect();
        	
        	//var query = client.query("SELECT * FROM users WHERE UserId = $1", [item.UserId]);
 
+        /*var conString = "postgres://warrenfulton:@localhost:5432/weathertech";
+        var client = new pg.Client(conString);
+        client.connect();
+
+       	var query = client.query("SELECT * FROM users WHERE UserId = $1", [item.UserId]);*/
        	/*query.on('row', function(row) {
        		if (row > 0) {
        			request.flash('error', 'Username already in use.');

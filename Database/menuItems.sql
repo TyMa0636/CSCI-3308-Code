@@ -124,12 +124,71 @@ INSERT INTO ingredients values
 (5, 'Tomato'),
 (5, 'Bread'),
 
-['basil pesto', 'mozzarella', 'spinach', 'cucumber', 'tomato', 'hummus']
 (6, 'Basil Pesto'),
 (6, 'Mozzarella'),
 
+(15, 'Mozzarella'),
+(15, 'Red Sauce'),
 
- 
-INSERT into pizza_calzone values ('Cheese Pizza', 20, 4.89, ['Mozzarella', 'Red Sauce']),('Pepperoni Pizza', 20,5.49,['Mozzarella','Red Sauce','Pepperoni']),('BBQ Chicken Pizza',20,6.89,['Mozzarella','BBQ Sauce','Chicken','Bacon','Onion']),('Meat Lovers Pizza',20,6.98,['Mozzarella','Sausage','Ham','Pepperoni','Red Sauce']),('Hawaiian Pizza',20,6.89,['Mozzarella','Pineapple','Ham','Red Sauce']),('Margherita Pizza',20,5.49,['Mozzarella','Tomato','Basil','Garlic','Red Sauce']),('Vegetarian Pizza',20,5.49,['Mozzarella','Spinach','Bell Peppers','Mushrooms','Red Sauce']),('Vegan Pizza',20,5.39,['Tomato','Garlic','Black Olives','Basil','Red Sauce']),('Cheese Calzone', 20, 5.89, ['Mozzarella']),('Pepperoni Calzone', 20,6.49,['Mozzarella','Pepperoni']),('BBQ Chicken Calzone',20,7.89,['Mozzarella','BBQ Sauce Side','Chicken','Bacon','Onion']),('Meat Lovers Calzone',20,7.98,['Mozzarella','Sausage','Ham','Pepperoni']),('Hawaiian Calzone',20,7.89,['Mozzarella','Pineapple','Ham']),('Margherita Calzone',20,6.49,['Mozzarella','Tomato','Basil','Garlic']),('Vegetarian Calzone',20,6.49,['Mozzarella','Spinach','Bell Peppers','Mushrooms']),('Vegan Calzone',20,6.39,['Tomato','Garlic','Black Olives','Basil']);
+(16, 'Mozzarella'),
+(16, 'Red Sauce'),
+(16, 'Pepperoni'),
 
-INSERT into inventory values ('White Bread', 1), ('Wheat Bread', 1), ('Ciabatta', 1), ('Potato Rosemary', 1), ('Whole Grain', 1), ('Bacon', 1), ('Chicken', 1), ('Ham', 1), ('Salami', 1), ('Pepperoni', 1), ('Sausage', 1),('Turkey',1), ('Cheddar', 1), ('Mozzarella', 1), ('Provolone', 1), ('Pepper Jack', 1), ('Fontina', 1), ('Swiss', 1), ('Parmesan', 1),  ('Lettuce', 1), ('Tomato', 1), ('Spinach', 1), ('Onion',1),('Mushrooms',1),('Bell Peppers',1), ('Banana Peppers',1), ('Cucumbers',1), ('Balsamic Onions', 1),('Black Olives',1),('Jalapenos',1),('Pineapple', 1), ('BBQ Sauce', 1), ('Red Sauce', 1), ('Hummus', 1), ('Garlic', 1), ('Basil', 1);
+(17, 'Mozzarella'),
+(17, 'BBQ Sauce'),
+(17, 'Chicken'),
+(17, 'Bacon'),
+(17, 'Onion'),
+
+(18, 'Mozzarella'),
+(18, 'Red Sauce'),
+(18, 'Sausage'),
+(18, 'Ham'),
+(18, 'Pepperoni'),
+
+(19, 'Mozzarella'),
+(19, 'Red Sauce'),
+(19, 'Pineapple'),
+(19, 'Ham'),
+
+(20, 'Mozzarella'),
+(20, 'Red Sauce'),
+(20, 'Tomato'),
+(20, 'Basil'),
+(20, 'Garlic'),
+
+(21, 'Mozzarella'),
+(21, 'Red Sauce'),
+(21, 'Spinach'),
+(21, 'Bell Peppers'),
+(21, 'Mushrooms'),
+
+(22, 'Tomato'),
+(22, 'Red Sauce'),
+(22, 'Garlic'),
+(22, 'Black Olives'),
+(22, 'Basil'),
+
+(23, 'Mozzarella'),
+
+(24, 'Mozzarella'),
+(24, 'Pepperoni'),
+
+
+INSERT into pizza_calzone values 
+(15, 'Cheese Pizza', 20, 4.89) 
+(16, 'Pepperoni Pizza', 20,5.49)
+(17, 'BBQ Chicken Pizza',20,6.89)
+(18, 'Meat Lovers Pizza',20,6.98)
+(19, 'Hawaiian Pizza',20,6.89)
+(20, 'Margherita Pizza',20,5.49)
+(21, 'Vegetarian Pizza',20,5.49)
+(22, 'Vegan Pizza',20,5.39)
+(23, 'Cheese Calzone', 20, 5.89)
+(24, 'Pepperoni Calzone', 20,6.49)
+(25, 'BBQ Chicken Calzone',20,7.89)
+(26, 'Meat Lovers Calzone',20,7.98)
+(27, 'Hawaiian Calzone',20,7.89)
+(28, 'Margherita Calzone',20,6.49)
+(29, 'Vegetarian Calzone',20,6.49)
+(30, 'Vegan Calzone',20,6.39);
