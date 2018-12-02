@@ -32,6 +32,34 @@ app.get('/signup', function (request,response) {
 	})
 });
 
+
+var UserSchema = new mongoose.UserSchema({
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+  username: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true,
+  }
+});
+
+UserSchema.statics.authenticate = function (email, password, callback){
+  User.findOne({ email: email })
+    .exec(function (err, user) {
+      if (err) {
+        
+      }
+    }
+}
 app.post('/signup', function (request,response) {
 	request.assert('Name', 'Name is required').notEmpty();
     request.assert('UserId', 'UserId is required').notEmpty();
@@ -52,7 +80,7 @@ app.post('/signup', function (request,response) {
         var conString = "postgres://warrenfulton:@localhost:5432/weathertech";
         var client = new pg.Client(conString);
         client.connect();
-       	
+       	==
        	var query = client.query("SELECT * FROM users WHERE UserId = $1", [item.UserId]);
 
        	query.on('row', function(row) {
