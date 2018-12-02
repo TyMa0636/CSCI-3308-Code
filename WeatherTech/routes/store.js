@@ -32,6 +32,8 @@ app.get('/signup', function (request,response) {
 	})
 });
 
+
+
 app.post('/signup', function (request,response) {
 	  request.assert('Name', 'Name is required').notEmpty();
     request.assert('UserId', 'UserId is required').notEmpty();
@@ -130,9 +132,45 @@ app.post('/signup', function (request,response) {
             })
       });
   }
-});
-         
+});       
 
+app.get('/signin', function(request, response){
+  response.render('store/signin', {
+    UserId: '',
+    Password: ''
+  })
+});
+
+app.post('signin', function(request, response){
+    request.assert('UserId', 'UserId is required').notEmpty();
+    request.assert('Password', 'Password is required').notEmpty();
+
+    errors = request.validationErrors();
+    if (!errors) { // No validation errors
+
+        var item = {
+            // sanitize() is a function used to prevent Hackers from inserting
+            // malicious code(as data) into our database. There by preventing
+            // SQL-injection attacks.
+            UserId: request.sanitize('UserId').escape().trim(),
+            Password: request.sanitize('Password').escape().trim()
+        };
+
+        var query = 'SELECT * FROM users WHERE userid =\'' + item.UserId +'\';';
+        
+        db.any(query)
+          .then(function (rows)
+          {
+            if(rows.length > 0)
+            {
+              response.render('index', {});
+            }else{
+              response.render('store/signup'{});
+            }
+          });
+  }
+  
+});
 
 
 
