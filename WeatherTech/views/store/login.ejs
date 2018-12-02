@@ -1,0 +1,38 @@
+<%- include ../header.ejs %>
+
+<div id="login" class="modal-login">
+ 
+  <div class="image"></div>
+
+  <form id="modal-content animate" action="/store/login" method="post">
+    <div class="imgcontainer">
+      <img src="../../public/assets/images/weathertech_logo.jpg" alt="Weathertech" class="logo">
+      <center><h2>Sign In To Your Account</h2></center>
+    </div> 
+
+    <div class="container">
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter your email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+
+      <button type="submit">Sign In</button>
+      
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button class="createaccount" id="signup-modal">Create an Account Now</button>
+
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+</body>
+</html>
+
