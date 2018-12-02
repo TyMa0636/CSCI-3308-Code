@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <title>WeatherTech Cafe!</title>
+
+   <link rel="stylesheet" href="../styles/login.css" type="text/css"/> 
+</head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+</style>
+<body>
+
+<!-- Button to open the modal login form -->
+<button onclick="document.getElementById('login').style.display='block'" style="width:auto;">Login</button>
+
+<!-- The Modal -->
+<div id="login" class="modal-login">
+  <span onclick="document.getElementById('login').style.display='none'" 
+class="close" title="Close Modal">&times;</span>
+  <div class="image"></div>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="../images/weathertech_logo.JPG" alt="Weathertech" class="logo">
+      <center><h2>Sign In To Your Account</h2></center>
+    </div> 
+
+    <div class="container">
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter your email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+
+      <button type="submit">Sign In</button>
+      
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button class="createaccount" id="signup-modal">Create an Account Now</button>
+
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('login');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+
+</body>
+</html>
