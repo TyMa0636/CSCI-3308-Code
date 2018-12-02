@@ -3,7 +3,7 @@ var app = express();
 
 app.get('/', function (request, response) {
    // render the views/index.ejs template file
-   response.render('index', {title: 'WeatherTech Cafe'})
+   response.render('index')
 });
 
 module.exports = app;

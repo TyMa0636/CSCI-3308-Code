@@ -30,13 +30,15 @@ app.use(session({
     cookie: {maxAge: 60000}
 }));
 app.use(flash());
+app.use('/public', express.static('public'));
 
 var index = require('./routes/index');
-var store = require('./routes/loginBackend');
-app.use('/', index);
-app.use('/store', loginBackend);
+var store = require('./routes/store');
 
-var port = 8080;
+app.use('/', index);
+app.use('/store', store);
+
+var port = 4000;
 app.listen(port, function () {
     console.log('Server running on http://localhost:' + port)
 });
