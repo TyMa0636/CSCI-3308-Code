@@ -193,7 +193,7 @@ app.get('/activeorders', function (request, response){
     })
     .catch(function (err){
         request.flash('error', err);
-        response.render('store/activerorders', {
+        response.render('store/activeorders', {
             title: 'Active Orders',
             data: ''
         })
@@ -220,25 +220,38 @@ app.post('/orders', function(request, response){
       UserId: request.sanitize('UserId').escape().trim(),
       FoodName: request.sanitize('FoodName').escape().trim()
     };
-    var queryUID = 'SELECT * FROM users WHERE userid=\'' +item.UserId +'\';';
-    var queryF = 'SELECT * FROM food WHERE name=\'' + item.FoodName +'\';';
-
-    if(queryUID != '' && queryF != '')
+    var queryUID = 'SELECT userid FROM users WHERE userid=\'' +item.UserId +'\';';
+    var queryF = 'SELECT name FROM food WHERE name=\'' + item.FoodName +'\';';
+db.any(queryUID)
+  .then(function(rows){
+    if(rows.length > 0)
     {
-      db.none('INSERT INTO active_orders(username, item) VALUES($1, $2)', [item.UserId, item.FoodName])
-      .then(function (result){
-        request.flash('success', 'Order placed');
-        response.render('store/orders',{
+      db.any(queryF)
+        .then(function(rows)
+        {
+          if(rows.length > 0)
+          {
+            db.none('INSERT INTO active_orders(username, item) VALUES($1, $2)', [item.UserId, item.FoodName])
+              .then(function (result){
+                request.flash('success', 'Order placed');
+                response.render('store/orders',{
 
-        }).catch(function (err){
-          request.flash('error', 'Please enter valid information');
-          response.render('store/orders',{})
+                });
+              });
+          }else{
+            request.flash('error', 'Please enter valid information');
+            response.render('store/orders', {});
+          }
         });
-      });
     }else{
       request.flash('error', 'Please enter valid information');
-      response.render('store/orders',{})
+      response.render('store/orders', {});
     }
+  });
+
+  
+    
+    
   }
 
   

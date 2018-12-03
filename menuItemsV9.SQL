@@ -1,6 +1,5 @@
 #DROP TABLE users;
 #DROP TABLE food;
-#DROP TABLE active_orders;
 #DROP TABLE inventory;
 #DROP TABLE ingredients;
 
