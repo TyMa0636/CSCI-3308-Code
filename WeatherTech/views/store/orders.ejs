@@ -1,0 +1,42 @@
+<%- include header.ejs %>
+
+<%- include ../header.ejs %>
+
+
+
+<div id="signup-modal">
+
+   <div id="image"></div>
+
+  <form id="modal-content" action="/store/signup" method="post">
+    <div id="signup-container">
+      <img id="weathertechimage" src="../../public/assets/images/weathertech_logo.JPG" alt="WeatherTech Cafe">
+      <h2>CREATE ACCOUNT</h2>
+
+      <h4>Acount Information</h4>
+
+      <% if (messages.error) { %>
+          <p style="color:red"><%- messages.error %></p>
+      <% } %>
+
+      <% if (messages.success) { %>
+          <p style="color:green"><%- messages.success %></p>
+      <% } %>
+
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Enter your name" name="name" required>
+
+      <label for="food"><b>Choose A Sandwich Or Pizza</b></label>
+      <input type="password" placeholder="Pepperoni Pizza" name="food" required>
+
+      <label for="phone_num"><b>Phone</b></label>
+      <input type="Phone" placeholder="(xxx)-xxx-xxx" name="phone_num" required>
+
+      <div id="clearfix">
+        
+        <button type="submit" id="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
