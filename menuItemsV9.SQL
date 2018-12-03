@@ -4,6 +4,8 @@
 #DROP TABLE inventory;
 #DROP TABLE ingredients;
 
+#DROP TABLE active_orders;
+
 CREATE TABLE if not exists users
 (
 	Name varchar(32) not null, 
@@ -28,10 +30,7 @@ CREATE TABLE if not exists food
 CREATE TABLE if not exists active_orders
 (
 	UserName varchar(32) not null, 
-	Item varchar(25) not null, 
-	PickupTime integer not null,
-
-	Primary Key(UserName)
+	Item varchar(25) not null
 );
 
 CREATE TABLE if not exists inventory
@@ -118,8 +117,8 @@ INSERT INTO ingredients (foodID, ingredient) values
 	(30, 'Tomato'), (30, 'Garlic'), (30, 'Black Olives'), (30, 'Basil')
 ;
 
-INSERT INTO active_orders (UserName, Item, PickupTime) values 
-	('tyma0636', 'Vegan Calzone', 20)
+INSERT INTO active_orders (UserName, Item) values 
+	('tyma0636', 'Vegan Calzone')
 ;
 
 INSERT into inventory (ingredientId, stockId) values 

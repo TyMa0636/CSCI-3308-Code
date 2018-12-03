@@ -201,6 +201,49 @@ app.get('/activeorders', function (request, response){
 });
 
 
+app.get('/orders', function(request,response){
+  response.render('store/orders',{
+    UserId: '',
+    FoodName: ''
+  })
+});
+
+    
+
+app.post('/orders', function(request, response){
+  request.assert('UserId', 'UserId is required').notEmpty();
+  request.assert('FoodName', 'FoodName is required').notEmpty();
+
+  errors = request.validationErrors();
+  if(!errors){
+    var item = {
+      UserId: request.sanitize('UserId').escape().trim(),
+      FoodName: request.sanitize('FoodName').escape().trim()
+    };
+    var queryUID = 'SELECT * FROM users WHERE userid=\'' +item.UserId +'\';';
+    var queryF = 'SELECT * FROM food WHERE name=\'' + item.FoodName +'\';';
+
+    if(queryUID != '' && queryF != '')
+    {
+      db.none('INSERT INTO active_orders(username, item) VALUES($1, $2)', [item.UserId, item.FoodName])
+      .then(function (result){
+        request.flash('success', 'Order placed');
+        response.render('store/orders',{
+
+        }).catch(function (err){
+          request.flash('error', 'Please enter valid information');
+          response.render('store/orders',{})
+        });
+      });
+    }else{
+      request.flash('error', 'Please enter valid information');
+      response.render('store/orders',{})
+    }
+  }
+
+  
+});
+
 
 
 
