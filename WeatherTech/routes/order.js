@@ -23,7 +23,7 @@ app.post('/order', function(request, response){
 			FoodName: request.sanitize('FoodName').escape().trim()
 		};
 		var queryUID = 'SELECT * FROM users WHERE userid =\'' +item.UserId +'\';';
-		car queryF = 'SELECT * FROM food'
+		var queryF = 'SELECT * FROM food WHERE foodid =\'' + item.FOodName +'\';';
 	}
 
 	db.none('INSERT INTO activeorders(username, item) VALUES($1, $2)', [item.Name, item.item])
