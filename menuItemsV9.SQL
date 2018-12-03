@@ -1,6 +1,5 @@
 #DROP TABLE users;
-#DROP TABLE sandwich;
-#DROP TABLE pizza_calzone;
+#DROP TABLE food;
 #DROP TABLE active_orders;
 #DROP TABLE inventory;
 #DROP TABLE ingredients;
@@ -14,25 +13,17 @@ CREATE TABLE if not exists users
 	Primary Key(UserID)
 ); 
 
-CREATE TABLE if not exists sandwich
+CREATE TABLE if not exists food
 (
-	sandID integer not null, 
+	foodID integer not null, 
 	Name varchar(25) not null, 
+	foodType varchar(15) not null,
 	WaitTime integer not null, 
 	Price float not null, 
 
-	Primary Key (sandID)
+	Primary Key (foodId)
 );
 
-CREATE TABLE if not exists pizza_calzone
-(
-	pizzaID integer not null, 
-	Name varchar(25) not null, 
-	WaitTime integer not null, 
-	Price float not null,
-
-	Primary Key (pizzaID)
-);
 
 CREATE TABLE if not exists active_orders
 (
@@ -60,40 +51,38 @@ INSERT INTO users (Name, UserId, Password) values
 	('Tyler Mauer', 'tyma0636', 'lozer')
 ;
 
-INSERT into sandwich (sandID, Name, WaitTime, Price) values 
-	(1, 'Baker Bacon', 7, 6.89), 
-	(2, 'BBQ Chicken', 7, 6.89), 
-	(3, 'BLT', 7, 4.89), 
-	(4, 'Italian', 7, 6.89), 
-	(5, 'Darley Divine', 7, 6.89), 
-	(6, 'Farrand Fodder', 7, 6.89), 
-	(7, 'Hallet Ham', 7, 6.89), 
-	(8, 'Libby Licous', 7, 6.89), 
-	(9, 'Parmesan Grilled Cheese', 7, 5.89), 
-	(10, 'Tofu Mozzarella', 7, 5.89), 
-	(11, 'Tuna Melt', 7, 5.89), 
-	(12, 'Turkey Bacon Club', 7, 6.89), 
-	(13, 'Turkey Jalapeno Melt', 7, 6.89), 
-	(14, 'Veggie Club', 7,  6.89)
+INSERT into food (FoodId, Name, foodType, WaitTime, Price) values 
+	(1, 'Baker Bacon', 'sandwich', 7, 6.89),
+	(2, 'BBQ Chicken', 'sandwich', 7, 6.89),
+	(3, 'BLT', 'sandwich', 7, 4.89),
+	(4, 'Italian', 'sandwich', 7, 6.89),
+	(5, 'Darley Divine', 'sandwich', 7, 6.89),
+	(6, 'Farrand Fodder', 'sandwich', 7, 6.89),
+	(7, 'Hallet Ham', 'sandwich', 7, 6.89),
+	(8, 'Libby Licous', 'sandwich', 7, 6.89),
+	(9, 'Parmesan Grilled Cheese', 'sandwich', 7, 5.89),
+	(10, 'Tofu Mozzarella', 'sandwich', 7, 5.89),
+	(11, 'Tuna Melt', 'sandwich', 7, 5.89),
+	(12, 'Turkey Bacon Club', 'sandwich', 7, 6.89),
+	(13, 'Turkey Jalapeno Melt', 'sandwich', 7, 6.89),
+	(14, 'Veggie Club', 'sandwich', 7, 6.89),
+	(15, 'Cheese Pizza', 'pizza', 20, 4.89),
+	(16, 'Pepperoni Pizza', 'pizza', 20,5.49),
+	(17, 'BBQ Chicken Pizza', 'pizza', 20,6.89),
+	(18, 'Meat Lovers Pizza', 'pizza', 20,6.98),
+	(19, 'Hawaiian Pizza', 'pizza', 20,6.89),
+	(20, 'Margherita Pizza', 'pizza', 20,5.49),
+	(21, 'Vegetarian Pizza', 'pizza', 20,5.49),
+	(22, 'Vegan Pizza', 'pizza', 20,5.39),
+	(23, 'Cheese Calzone', 'calzone', 20, 5.89),
+	(24, 'Pepperoni Calzone', 'calzone', 20,6.49),
+	(25, 'BBQ Chicken Calzone', 'calzone', 20,7.89),
+	(26, 'Meat Lovers Calzone', 'calzone', 20,7.98),
+	(27, 'Hawaiian Calzone', 'calzone', 20,7.89),
+	(28, 'Margherita Calzone', 'calzone', 20,6.49),
+	(29, 'Vegetarian Calzone', 'calzone', 20,6.49),
+	(30, 'Vegan Calzone', 'calzone', 20,6.39)
 ;
-
-INSERT into pizza_calzone (pizzaID, Name, WaitTime, Price) values 
-	(15, 'Cheese Pizza', 20, 4.89),
-	(16, 'Pepperoni Pizza', 20,5.49),
-	(17, 'BBQ Chicken Pizza',20,6.89),
-	(18, 'Meat Lovers Pizza',20,6.98),
-	(19, 'Hawaiian Pizza',20,6.89),
-	(20, 'Margherita Pizza',20,5.49),
-	(21, 'Vegetarian Pizza',20,5.49),
-	(22, 'Vegan Pizza',20,5.39),
-	(23, 'Cheese Calzone', 20, 5.89),
-	(24, 'Pepperoni Calzone', 20,6.49),
-	(25, 'BBQ Chicken Calzone',20,7.89),
-	(26, 'Meat Lovers Calzone',20,7.98),
-	(27, 'Hawaiian Calzone',20,7.89),
-	(28, 'Margherita Calzone',20,6.49),
-	(29, 'Vegetarian Calzone',20,6.49),
-	(30, 'Vegan Calzone',20,6.39)
 ;
 
 INSERT INTO ingredients (foodID, ingredient) values 
@@ -144,3 +133,6 @@ INSERT into inventory (ingredientId, stockId) values
 ;
 
 
+--SELECT users.name, users.UserId, food.name as food_name, food.price, active_orders.PickupTime from users
+--inner join active_orders on active_orders.UserId = users.UserId
+--inner join food on food.foodId = active_orders.foodId;
