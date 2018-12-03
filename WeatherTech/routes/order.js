@@ -10,9 +10,22 @@ app.get('/order', function(request,response){
 	})
 });
 
-//needs the order page to finish
+    
 
 app.post('/order', function(request, response){
+	request.assert('UserId', 'UserId is required').notEmpty();
+	request.assert('FoodName', 'FoodName is required').notEmpty();
+
+	errors = request.validationErrors();
+	if(!errors){
+		var item = {
+			UserId: request.sanitize('UserId').escape().trim(),
+			FoodName: request.sanitize('FoodName').escape().trim()
+		};
+		var queryUID = 'SELECT * FROM users WHERE userid =\'' +item.UserId +'\';';
+		car queryF = 'SELECT * FROM food'
+	}
+
 	db.none('INSERT INTO activeorders(username, item) VALUES($1, $2)', [item.Name, item.item])
 	.then(function (result){
 		request.flash('success', 'Order placed');
