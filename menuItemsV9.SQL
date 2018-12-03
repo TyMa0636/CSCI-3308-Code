@@ -133,3 +133,6 @@ INSERT into inventory (ingredientId, stockId) values
 ;
 
 
+--SELECT users.name, users.UserId, food.name as food_name, food.price, active_orders.PickupTime from users
+--inner join active_orders on active_orders.UserId = users.UserId
+--inner join food on food.foodId = active_orders.foodId;
