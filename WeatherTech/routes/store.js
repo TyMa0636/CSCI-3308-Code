@@ -5,10 +5,10 @@ var app = express();
 module.exports = app;
 
 app.get('/', function (request, response) {
-    response.render('index', {
-        UserId: '',
-        Password: ''
-    })
+  response.render('index', {
+    });
+
+    
 });
 
 
@@ -31,8 +31,6 @@ app.get('/signup', function (request,response) {
 		Password: ''
 	})
 });
-
-
 
 app.post('/signup', function (request,response) {
 	  request.assert('Name', 'Name is required').notEmpty();
@@ -134,14 +132,14 @@ app.post('/signup', function (request,response) {
   }
 });       
 
-app.get('/signin', function(request, response){
-  response.render('store/signin', {
+app.get('/login2', function(request, response){
+  response.render('store/login2', {
     UserId: '',
     Password: ''
-  })
+  });
 });
 
-app.post('signin', function(request, response){
+app.post('/login2', function(request, response){
     request.assert('UserId', 'UserId is required').notEmpty();
     request.assert('Password', 'Password is required').notEmpty();
 
@@ -156,22 +154,51 @@ app.post('signin', function(request, response){
             Password: request.sanitize('Password').escape().trim()
         };
 
-        var query = 'SELECT * FROM users WHERE userid =\'' + item.UserId +'\';';
+        var query = 'SELECT * FROM users WHERE userid =\'' + item.UserId +'\' AND password =\'' + item.Password +'\';';
         
         db.any(query)
           .then(function (rows)
           {
             if(rows.length > 0)
             {
-              response.render('index', {});
+              response.render('index', {
+
+              });
             }else{
-              response.render('store/signup'{});
+              request.flash('error', 'User does not exist. Please create an account');
+              response.render('store/login2', {
+
+              });
             }
-          });
+          }).catch(function (err) {
+            request.flash('error', err);
+            response.render('store/sandwiches', {
+                
+            })
+      });
   }
   
 });
 
+
+app.get('/activeorders', function (request, response){
+    var query = 'SELECT * FROM active_orders;';
+
+    db.any(query)
+        .then(function(rows){
+            response.render('store/activeorders', {
+                title: 'Active Orders',
+                data: rows
+        })
+    })
+    .catch(function (err){
+        request.flash('error', err);
+        response.render('store/activerorders', {
+            title: 'Active Orders',
+            data: ''
+        })
+    });
+});
 
 
 
