@@ -3,6 +3,13 @@ var db = require('../database');
 var app = express();
 module.exports = app;
 
+app.get('/order', function(request,response){
+	response.render('index',{
+		UserId: '',
+		FoodName: ''
+	})
+});
+
 //needs the order page to finish
 
 app.post('/order', function(request, response){
